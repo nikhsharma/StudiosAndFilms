@@ -6,6 +6,8 @@ import models.studios.Studio;
 import org.hibernate.annotations.ManyToAny;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 
@@ -24,6 +26,7 @@ public class Film {
         this.genre = genre;
         this.studio = studio;
         this.director = director;
+        this.cast = new HashSet<Actor>();
     }
 
     public Film() {
@@ -89,5 +92,9 @@ public class Film {
 
     public void setCast(Set<Actor> cast) {
         this.cast = cast;
+    }
+
+    public void addActorToFilm(Actor actor) {
+        this.cast.add(actor);
     }
 }

@@ -3,6 +3,7 @@ package models.people;
 import models.films.Film;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -15,6 +16,7 @@ public class Actor extends Person {
     public Actor(String name, int cash) {
         super(name);
         this.cash = cash;
+        this.films = new HashSet<Film>();
     }
 
     public Actor() {
@@ -39,5 +41,9 @@ public class Actor extends Person {
 
     public void setFilms(Set<Film> films) {
         this.films = films;
+    }
+
+    public void addFilmToActor(Film film){
+        this.films.add(film);
     }
 }

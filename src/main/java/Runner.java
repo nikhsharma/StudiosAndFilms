@@ -1,4 +1,5 @@
 import com.sun.xml.internal.ws.api.ha.StickyFeature;
+import db.DBFilm;
 import db.DBHelper;
 import models.films.Film;
 import models.films.Genre;
@@ -25,8 +26,16 @@ public class Runner {
         Actor actor1 = new Actor("Jeff Goldblum", 300000);
         DBHelper.save(actor1);
 
+
+
         List<Studio> allStudios = DBHelper.getAll(Studio.class);
         List<Person> allPeople = DBHelper.getAll(Person.class);
         List<Film> allFilms = DBHelper.getAll(Film.class);
+
+        DBHelper.addActorToFilm(actor1, film1);
+
+        List<Actor> allActorsInFilm = DBFilm.allCastInFilm(film1);
+
+
     }
 }
