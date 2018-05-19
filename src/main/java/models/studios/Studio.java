@@ -1,6 +1,7 @@
 package models.studios;
 
 import models.films.Film;
+import models.people.Actor;
 
 import javax.persistence.*;
 import java.util.Set;
@@ -58,5 +59,10 @@ public class Studio {
 
     public void setFilms(Set<Film> films) {
         this.films = films;
+    }
+
+    public void payActor(Actor actor, int amount) {
+        this.budget -= amount;
+        actor.addToCash(amount);
     }
 }

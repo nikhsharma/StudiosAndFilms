@@ -46,4 +46,8 @@ public class Actor extends Person {
     public void addFilmToActor(Film film){
         this.films.add(film);
     }
+
+    public void addToCash(int amount) {
+        this.cash += amount;
+    }
 }

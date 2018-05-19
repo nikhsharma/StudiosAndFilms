@@ -27,11 +27,13 @@ public class Runner {
 
 
 
-        List<Studio> allStudios = DBHelper.getAll(Studio.class);
         List<Person> allPeople = DBHelper.getAll(Person.class);
         List<Film> allFilms = DBHelper.getAll(Film.class);
 
         DBHelper.addActorToFilm(actor1, film1);
+
+        DBStudio.payActorFromStudioBudget(actor1, studio1, 100000);
+        List<Studio> allStudios = DBHelper.getAll(Studio.class);
 
         List<Actor> allActorsInFilm = DBFilm.allCastInFilm(film1);
         List<Film> allFilmsWithActor = DBActor.allFilmsWithActor(actor1);
