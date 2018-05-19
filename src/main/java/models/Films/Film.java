@@ -1,11 +1,16 @@
-package models.Films;
+package models.films;
 
-import models.People.Actor;
-import models.People.Director;
+import models.people.Actor;
+import models.people.Director;
 import models.studios.Studio;
+import org.hibernate.annotations.ManyToAny;
 
+import javax.persistence.*;
 import java.util.Set;
 
+
+@Entity
+@Table(name = "films")
 public class Film {
     private int id;
     private String title;
@@ -21,6 +26,12 @@ public class Film {
         this.director = director;
     }
 
+    public Film() {
+    }
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     public int getId() {
         return id;
     }
@@ -29,6 +40,7 @@ public class Film {
         this.id = id;
     }
 
+    @Column(name = "title")
     public String getTitle() {
         return title;
     }
@@ -37,6 +49,7 @@ public class Film {
         this.title = title;
     }
 
+    @Enumerated(EnumType.STRING)
     public Genre getGenre() {
         return genre;
     }
@@ -45,6 +58,8 @@ public class Film {
         this.genre = genre;
     }
 
+    @ManyToOne
+    @JoinColumn(name = "studion_id", nullable = false)
     public Studio getStudio() {
         return studio;
     }
@@ -53,6 +68,8 @@ public class Film {
         this.studio = studio;
     }
 
+    @ManyToOne
+    @JoinColumn(name = "director_id", nullable = false)
     public Director getDirector() {
         return director;
     }
@@ -61,6 +78,11 @@ public class Film {
         this.director = director;
     }
 
+    @ManyToMany(cascade = CascadeType.PERSIST)
+    @JoinTable(name="actor_film",
+            joinColumns = {@JoinColumn(name = "film_id", nullable = false, updatable = false)},
+            inverseJoinColumns = {@JoinColumn(name = "student_id", nullable = false, updatable = false)}
+    )
     public Set<Actor> getCast() {
         return cast;
     }

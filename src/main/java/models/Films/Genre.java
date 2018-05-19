@@ -1,4 +1,4 @@
-package models.Films;
+package models.films;
 
 public enum Genre {
     ACTION,

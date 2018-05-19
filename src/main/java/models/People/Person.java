@@ -1,14 +1,15 @@
-package models.People;
+package models.people;
 
-import models.Films.Film;
 
-import java.util.Set;
+import javax.persistence.*;
 
+@Entity
+@Inheritance(strategy = InheritanceType.JOINED)
+@Table(name = "people")
 public abstract class Person {
 
     private int id;
     private String name;
-    private Set<Film> films;
 
     public Person(String name) {
         this.name = name;
@@ -17,6 +18,9 @@ public abstract class Person {
     public Person() {
     }
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     public int getId() {
         return id;
     }
@@ -25,6 +29,7 @@ public abstract class Person {
         this.id = id;
     }
 
+    @Column(name = "name")
     public String getName() {
         return name;
     }
@@ -33,11 +38,4 @@ public abstract class Person {
         this.name = name;
     }
 
-    public Set<Film> getFilms() {
-        return films;
-    }
-
-    public void setFilms(Set<Film> films) {
-        this.films = films;
-    }
 }
