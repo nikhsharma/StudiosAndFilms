@@ -1,8 +1,5 @@
 import com.sun.xml.internal.ws.api.ha.StickyFeature;
-import db.DBActor;
-import db.DBDirector;
-import db.DBFilm;
-import db.DBHelper;
+import db.*;
 import models.films.Film;
 import models.films.Genre;
 import models.people.Actor;
@@ -39,5 +36,6 @@ public class Runner {
         List<Actor> allActorsInFilm = DBFilm.allCastInFilm(film1);
         List<Film> allFilmsWithActor = DBActor.allFilmsWithActor(actor1);
         List<Film> allFilmsFromDirector = DBDirector.allFilmsFromDirector(director1);
+        List<Film> allFilmsFromStudio = DBStudio.allFilmsFromStudio(studio1);
     }
 }
