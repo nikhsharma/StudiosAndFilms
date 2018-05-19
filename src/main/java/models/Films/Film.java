@@ -2,6 +2,7 @@ package models.Films;
 
 import models.People.Actor;
 import models.People.Director;
+import models.studios.Studio;
 
 import java.util.Set;
 

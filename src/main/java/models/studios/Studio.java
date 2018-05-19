@@ -1,20 +1,22 @@
-package models.People;
+package models.studios;
 
 import models.Films.Film;
 
 import java.util.Set;
 
-public abstract class Person {
+public class Studio {
 
     private int id;
     private String name;
+    private int budget;
     private Set<Film> films;
 
-    public Person(String name) {
+    public Studio(String name, int budget) {
         this.name = name;
+        this.budget = budget;
     }
 
-    public Person() {
+    public Studio() {
     }
 
     public int getId() {
@@ -31,6 +33,14 @@ public abstract class Person {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public int getBudget() {
+        return budget;
+    }
+
+    public void setBudget(int budget) {
+        this.budget = budget;
     }
 
     public Set<Film> getFilms() {
