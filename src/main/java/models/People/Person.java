@@ -1,4 +1,4 @@
-package models;
+package models.People;
 
 public abstract class Person {
 
